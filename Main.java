@@ -12,10 +12,10 @@ public class Main {
     int pi=0;
     int pj=n/2;
     int pl=0;
-    for(int i=0;i<n;i++){
-      for(int j=0;j<n;j++){
-        if(mat[pi][pj]==0)
+    while(pl<n*n){
+        if(mat[pi][pj]==0){
         mat[pi][pj]=++pl;
+        
         if(pi==0&&pj==n-1){
           pi=n-1;
           pj=0;
@@ -33,11 +33,44 @@ public class Main {
         pi-=1;
         pj+=1;
       }
+          
+        }
+        else{
+          //pj-=1;
+          //pi+=2;
+          if(pi==n-1&&pj==0){
+            pj=n-1;
+            pi=1;
+          }
+          else if(pi==n-2&&pj==0){
+            pj=n-1;
+            pi=0;
+          }
+          else if(pj==0){
+            pj=n-1;
+            pi+=2;
+          }
+          else if(pi==n-1){
+            pi=1;
+            pj-=1;
+            
+          }
+          else if(pi==n-2){
+            pi=0;
+            pj-=1;
+          }
+          else {
+            pi+=2;
+            pj-=1;
+          }
+        }
+        
+        
         print(mat,n);
       }
     }
     
-  }
+  
   static void print(int[][] mat,int n){
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
